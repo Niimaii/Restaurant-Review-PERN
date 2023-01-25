@@ -3,7 +3,8 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 
-app.use(morgan("dev"));
+// This takes the information from the page (which is in JSON) and attack it to our request under body (i.e req.body). https://youtu.be/J01rYl9T3BU?t=6914
+app.use(express.json());
 
 /* When the front end does a get method towards 
 http://localhost:3001/getRestaurants This will hit the route we established bellow
@@ -22,14 +23,47 @@ app.get("/api/v1/restaurants", (req, res) => {
 });
 
 // Get a individual restaurant
-app.get("/api/v1/restaurants/:restaurantid", (req, res) => {
+app.get("/api/v1/restaurants/:id", (req, res) => {
   console.log(req.params);
-  console.log("This ran");
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      restaurant: "mcdonalds",
+    },
+  });
 });
 
 // Create a Restaurant
 app.post("/api/v1/restaurants", (req, res) => {
-  console.log(req), "this also ran";
+  console.log(req.body);
+
+  res.status(201).json({
+    status: "success",
+    data: {
+      restaurant: "mcdonalds",
+    },
+  });
+});
+
+// Update Restaurants
+app.put("/api/v1/restaurants/:id", (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      restaurant: "mcdonalds",
+    },
+  });
+});
+
+// Delete Restaurant
+app.delete("/api/v1/restaurants/:id", (req, res) => {
+  res.status(204).json({
+    status: "success",
+  });
 });
 
 const port = process.env.PORT || 3001;
