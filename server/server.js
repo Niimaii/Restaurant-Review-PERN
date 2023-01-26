@@ -12,18 +12,24 @@ http://localhost:3001/getRestaurants This will hit the route we established bell
 */
 // Get all restaurants
 app.get("/api/v1/restaurants", async (req, res) => {
-  // db.query is a promise
-  const results = await db.query("select * from restaurants");
-  console.log(results);
-  console.log("Route handler ran!");
-  //This outputs on the website page
-  // Status allows us to send a custom code when this runs
-  res.status(200).json({
-    status: "success",
-    data: {
-      restaurant: ["mcdonalds", "wendys"],
-    },
-  });
+  try {
+    // db.query is a promise
+    const results = await db.query("select * from restaurants");
+    console.log(results);
+    console.log("Route handler ran!");
+    //This outputs on the website page
+    // Status allows us to send a custom code when this runs
+    res.status(200).json({
+      status: "success",
+      results: results.rows.length,
+      data: {
+        // Instead ofhard coding the data being returned for the restaurants, we are gathering the data straight from the data base
+        restaurants: results.rows,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Get a individual restaurant
