@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-const db = require("./db");
+const db = require("./db/index.js");
 const app = express();
 
 // This takes the information from the page (which is in JSON) and attack it to our request under body (i.e req.body). https://youtu.be/J01rYl9T3BU?t=6914
@@ -60,6 +60,7 @@ app.post("/api/v1/restaurants", async (req, res) => {
   console.log(req.body);
 
   try {
+    // "returning *" returns the data added we added to the table
     const results = await db.query(
       "INSERT INTO restaurants (name,location, price_range) values ($1, $2, $3) returning *",
       [req.body.name, req.body.location, req.body.price_range]
@@ -80,14 +81,21 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
   console.log(req.body);
 
   try {
-  } catch {}
+    const results = await db.query(
+      "UPDATE restaurants SET name = $1, location = $2, price_range = $3 where id = $4 returning *",
+      [req.body.name, req.body.location, req.body.price_range, req.params.id]
+    );
 
-  res.status(200).json({
-    status: "success",
-    data: {
-      restaurant: "mcdonalds",
-    },
-  });
+    console.log(results);
+    res.status(200).json({
+      status: "success",
+      data: {
+        restaurant: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // Delete Restaurant
