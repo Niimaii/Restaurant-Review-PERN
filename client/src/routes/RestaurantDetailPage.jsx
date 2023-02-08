@@ -5,7 +5,6 @@ const RestaurantDetailPage = () => {
   return (
     <>
       <div>RestaurantDetailPage</div>
-      <Outlet />
     </>
   );
 };

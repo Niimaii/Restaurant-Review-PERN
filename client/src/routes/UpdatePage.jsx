@@ -5,7 +5,6 @@ const UpdatePage = () => {
   return (
     <>
       <div>UpdatePage</div>
-      <Outlet />
     </>
   );
 };
