@@ -5,9 +5,15 @@ export const RestaurantsContext = createContext();
 export const RestaurantsContextProvider = (props) => {
   const [restaurants, setRestaurants] = useState([]);
 
+  const addRestaurants = (restaurant) => {
+    setRestaurants([...restaurants, restaurant]);
+  };
+
   return (
     // Keep in mind here that in value we are passing down an Object. However instead of doing: { restaurants: restaurants, setRestaurants: setRestaurants }. We just do it the way shown bellow
-    <RestaurantsContext.Provider value={{ restaurants, setRestaurants }}>
+    <RestaurantsContext.Provider
+      value={{ restaurants, setRestaurants, addRestaurants }}
+    >
       {props.children}
     </RestaurantsContext.Provider>
   );
