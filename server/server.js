@@ -3,7 +3,9 @@ const express = require("express");
 const morgan = require("morgan");
 const db = require("./db/index.js");
 const app = express();
+const cors = require("cors");
 
+app.use(cors());
 // This takes the information from the page (which is in JSON) and attack it to our request under body (i.e req.body). https://youtu.be/J01rYl9T3BU?t=6914
 app.use(express.json());
 
@@ -15,8 +17,7 @@ app.get("/api/v1/restaurants", async (req, res) => {
   try {
     // db.query is a promise
     const results = await db.query("select * from restaurants");
-    console.log(results);
-    console.log("Route handler ran!");
+
     //This outputs on the website page
     // Status allows us to send a custom code when this runs
     res.status(200).json({
@@ -34,8 +35,6 @@ app.get("/api/v1/restaurants", async (req, res) => {
 
 // Get a individual restaurant
 app.get("/api/v1/restaurants/:id", async (req, res) => {
-  console.log(req.params.id);
-
   try {
     const results = await db.query(
       // This is the safe where to do it, notice that we have $1 at the end. This represents the value given the array to the right.
