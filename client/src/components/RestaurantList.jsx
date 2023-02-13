@@ -17,6 +17,19 @@ const RestaurantList = (props) => {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await RestaurantFinder.delete(`${id}`);
+      setRestaurants(
+        // Only add elements.id in the new array that DOES NOT match the id of the element we just delted. If it does match then it's not included in the new Array.
+        restaurants.filter((restaurant) => {
+          return restaurant.id !== id;
+        })
+      );
+      console.log(response);
+    } catch (err) {}
+  };
+
   return (
     <div>
       <div className=" list-group">
@@ -45,7 +58,12 @@ const RestaurantList = (props) => {
                       <button className="btn btn-warning">Update</button>
                     </td>
                     <td>
-                      <button className="btn btn-danger">Delete</button>
+                      <button
+                        onClick={() => handleDelete(restaurant.id)}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
