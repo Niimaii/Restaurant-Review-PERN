@@ -36,3 +36,8 @@
 .update_rest_form label {
   margin-bottom: 0.2rem;
 }
+
+/* ***** Reviews ***** */
+.card_review {
+  margin: 0 0.7rem;
+}

@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { RestaurantsContext } from "../context/RestaurantsContext";
 import RestaurantFinder from "../apis/RestaurantFinder";
+import StarRating from "../components/StarRating";
+import Reviews from "../components/Reviews";
 
 const RestaurantDetailPage = () => {
   const { id } = useParams();
@@ -21,7 +23,17 @@ const RestaurantDetailPage = () => {
   }, []);
 
   // This will only load if selectedRestaurant has data
-  return <div>{selectedRestaurant && selectedRestaurant.name}</div>;
+  return (
+    <div>
+      {selectedRestaurant && (
+        <>
+          <div className="mt-3">
+            <Reviews />
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default RestaurantDetailPage;
