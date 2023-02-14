@@ -22,3 +22,13 @@
 .formNames {
   background-color: #0d6efd !important;
 }
+
+/* ***** UpdateRestaurantList ***** */
+
+.update_rest_form div {
+  margin: 1rem 0;
+}
+
+.update_rest_form label {
+  margin-bottom: 0.2rem;
+}
