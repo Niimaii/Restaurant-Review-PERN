@@ -23,6 +23,10 @@
   background-color: #0d6efd !important;
 }
 
+.rest_btn {
+  cursor: pointer;
+}
+
 /* ***** UpdateRestaurantList ***** */
 
 .update_rest_form div {
