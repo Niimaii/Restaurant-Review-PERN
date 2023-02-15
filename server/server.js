@@ -36,17 +36,22 @@ app.get("/api/v1/restaurants", async (req, res) => {
 // Get a individual restaurant
 app.get("/api/v1/restaurants/:id", async (req, res) => {
   try {
-    const results = await db.query(
-      // This is the safe where to do it, notice that we have $1 at the end. This represents the value given the array to the right.
-
+    // This is the safe way to do it, notice that we have $1 at the end. This represents the value given the array to the right.
+    const restaurant = await db.query(
       "select * from restaurants where id = $1",
+      [req.params.id]
+    );
+
+    const reviews = await db.query(
+      "select * from reviews where restaurant_id = $1",
       [req.params.id]
     );
 
     res.status(200).json({
       status: "success",
       data: {
-        restaurant: results.rows[0],
+        restaurant: restaurant.rows[0],
+        reviews: reviews.rows,
       },
     });
   } catch {

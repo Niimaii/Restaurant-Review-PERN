@@ -30,7 +30,7 @@ const RestaurantList = (props) => {
           return restaurant.id !== id;
         })
       );
-      console.log(response);
+      console.log(restaurants);
     } catch (err) {}
   };
 

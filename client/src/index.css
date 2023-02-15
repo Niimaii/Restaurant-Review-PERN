@@ -41,3 +41,24 @@
 .card_review {
   margin: 0 0.7rem;
 }
+
+/* ***** Reviews ***** */
+
+.review_form div:nth-child(1) {
+  margin-right: 1rem;
+}
+.review_form div:nth-child(2) {
+  flex: 1;
+}
+
+.review_form div {
+  margin: 0.7rem 0;
+}
+
+.review_form_cont label {
+  margin-bottom: 0.4rem;
+}
+
+.review_form_cont button {
+  margin-top: 1rem;
+}
