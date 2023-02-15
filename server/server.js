@@ -16,16 +16,19 @@ http://localhost:3001/getRestaurants This will hit the route we established bell
 app.get("/api/v1/restaurants", async (req, res) => {
   try {
     // db.query is a promise
-    const results = await db.query("select * from restaurants");
+
+    const restaurantRatingData = await db.query(
+      "select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;"
+    );
 
     //This outputs on the website page
     // Status allows us to send a custom code when this runs
     res.status(200).json({
       status: "success",
-      results: results.rows.length,
+      results: restaurantRatingData.rows.length,
       data: {
         // Instead ofhard coding the data being returned for the restaurants, we are gathering the data straight from the data base
-        restaurants: results.rows,
+        restaurants: restaurantRatingData.rows,
       },
     });
   } catch (err) {
@@ -38,7 +41,7 @@ app.get("/api/v1/restaurants/:id", async (req, res) => {
   try {
     // This is the safe way to do it, notice that we have $1 at the end. This represents the value given the array to the right.
     const restaurant = await db.query(
-      "select * from restaurants where id = $1",
+      "select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id where id = $1;",
       [req.params.id]
     );
 

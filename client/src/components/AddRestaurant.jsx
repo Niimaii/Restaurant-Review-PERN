@@ -22,6 +22,8 @@ const AddRestaurant = () => {
     } catch (err) {}
   };
 
+  console.log(priceRange);
+
   return (
     <div className="mb-4">
       <form className="" action="">

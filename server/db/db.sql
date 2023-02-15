@@ -9,3 +9,5 @@ CREATE TABLE reviews(
 INSERT INTO reviews (restaurant_id, name, review, rating) values (11, 'Steve', 'Good enough I guess', 3);
 
 INSERT INTO reviews(restaurant_id, name, review, rating) values (1, 'Nimai', 'Amazing vegan restaurant! I would eat there everyday if I could', 5);
+
+select * from restaurants left join (select restaurant_id, COUNT(*), TRUNC(AVG(rating),1) as average_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id;

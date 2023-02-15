@@ -8,7 +8,7 @@ function AddReview() {
   const { id } = useParams();
   const [name, setName] = useState("");
   const [reviewText, setReviewText] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState("Rating");
 
   const handleSubmitReview = async (e) => {
     console.log("TEST");
