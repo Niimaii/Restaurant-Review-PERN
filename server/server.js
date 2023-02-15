@@ -123,7 +123,6 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
       "INSERT INTO reviews (restaurant_id, name, review, rating) values ($1, $2, $3, $4) returning *;",
       [req.params.id, req.body.name, req.body.review, req.body.rating]
     );
-    console.log(newReview);
     res.status(201).json({
       status: "success",
       data: {
