@@ -7,3 +7,5 @@ CREATE TABLE reviews(
 );
 
 INSERT INTO reviews (restaurant_id, name, review, rating) values (11, 'Steve', 'Good enough I guess', 3);
+
+INSERT INTO reviews(restaurant_id, name, review, rating) values (1, 'Nimai', 'Amazing vegan restaurant! I would eat there everyday if I could', 5);
