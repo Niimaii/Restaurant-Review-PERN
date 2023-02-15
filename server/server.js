@@ -118,6 +118,13 @@ app.delete("/api/v1/restaurants/:id", async (req, res) => {
 });
 
 app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
+  console.log(
+    "BIG REQ TEST",
+    req.params.id,
+    req.body.name,
+    req.body.review,
+    req.body.rating
+  );
   try {
     const newReview = await db.query(
       "INSERT INTO reviews (restaurant_id, name, review, rating) values ($1, $2, $3, $4) returning *;",
@@ -129,6 +136,7 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
         review: newReview.rows[0],
       },
     });
+    console.log("req test", req.params.id);
   } catch (err) {
     console.log(err);
   }
