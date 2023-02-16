@@ -32,7 +32,7 @@ const RestaurantList = (props) => {
           return restaurant.id !== id;
         })
       );
-      console.log(restaurants);
+      console.log("restaurants list:", restaurants);
     } catch (err) {}
   };
 
@@ -52,7 +52,7 @@ const RestaurantList = (props) => {
     }
     return (
       <>
-        <StarRating rating={restaurant.id} />
+        <StarRating rating={restaurant.average_rating} />
         <span className="text-warning ml-1">({restaurant.count})</span>
       </>
     );
