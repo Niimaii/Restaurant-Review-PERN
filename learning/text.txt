@@ -1,5 +1,0 @@
--- For help: \?
--- list databases: \l
--- To create database: CREATE DATABASE database_name;
--- Connect to database: \c databaseName
--- List all tables: \d
