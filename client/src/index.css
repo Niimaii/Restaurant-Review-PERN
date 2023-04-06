@@ -17,6 +17,13 @@
   border-radius: 5px;
 }
 
+/* Title */
+
+.nav-title {
+  display: flex;
+  justify-content: center;
+}
+
 /* ***** RestaurantList ***** */
 
 .formNames {
