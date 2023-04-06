@@ -1,5 +1,3 @@
-// "start": "nodemon server.js"
-
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
@@ -14,17 +12,6 @@ app.use(express.json());
 /* When the front end does a get method towards 
 http://localhost:3001/getRestaurants This will hit the route we established bellow
 */
-
-app.get('/*', function (req, res) {
-  res.sendFile(
-    path.join(__dirname, '../client/build.index.html'),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
-});
 // Get all restaurants
 app.get('/api/v1/restaurants', async (req, res) => {
   try {
@@ -158,7 +145,7 @@ app.post('/api/v1/restaurants/:id/addReview', async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is up and listening on port ${port}`);
 });

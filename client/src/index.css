@@ -62,3 +62,16 @@
 .review_form_cont button {
   margin-top: 1rem;
 }
+
+/* Responsive */
+
+@media (max-width: 535px) {
+  .font-size td {
+    font-size: 0.9rem;
+    padding: 5px 3px;
+  }
+
+  .cont {
+    padding: 0px;
+  }
+}

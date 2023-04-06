@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
-import { useNavigate } from "react-router-dom";
-import StarRating from "./StarRating";
+import React, { useContext, useEffect } from 'react';
+import RestaurantFinder from '../apis/RestaurantFinder';
+import { RestaurantsContext } from '../context/RestaurantsContext';
+import { useNavigate } from 'react-router-dom';
+import StarRating from './StarRating';
 
 const RestaurantList = (props) => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
@@ -12,7 +12,7 @@ const RestaurantList = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await RestaurantFinder.get("/");
+        const response = await RestaurantFinder.get('/');
         setRestaurants(response.data.data.restaurants);
         console.log(response.data.data);
       } catch (err) {
@@ -32,7 +32,7 @@ const RestaurantList = (props) => {
           return restaurant.id !== id;
         })
       );
-      console.log("restaurants list:", restaurants);
+      console.log('restaurants list:', restaurants);
     } catch (err) {}
   };
 
@@ -48,28 +48,28 @@ const RestaurantList = (props) => {
   const renderRating = (restaurant) => {
     // If there is no reviews, render this
     if (!restaurant.count) {
-      return <span className="text-warning">0 reviews</span>;
+      return <span className='text-warning'>0 reviews</span>;
     }
     return (
       <>
         <StarRating rating={restaurant.average_rating} />
-        <span className="text-warning ml-1">({restaurant.count})</span>
+        <span className='text-warning ml-1'>({restaurant.count})</span>
       </>
     );
   };
 
   return (
     <div>
-      <div className=" list-group">
-        <table className="table table-hover table-dark">
+      <div className=' list-group'>
+        <table className='table table-hover table-dark'>
           <thead>
-            <tr className="table-primary">
-              <th scope="col">Restaurant</th>
-              <th scope="col">Location</th>
-              <th scope="col">Price Range</th>
-              <th scope="col">Ratings</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
+            <tr className='table-primary font-size'>
+              <th scope='col'>Restaurant</th>
+              <th scope='col'>Location</th>
+              <th scope='col'>Price Range</th>
+              <th scope='col'>Ratings</th>
+              <th scope='col'>Edit</th>
+              <th scope='col'>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -78,17 +78,18 @@ const RestaurantList = (props) => {
               restaurants.map((restaurant) => {
                 return (
                   <tr
+                    className='font-size'
                     onClick={() => handleRestaurantSelect(restaurant.id)}
                     key={restaurant.id}
                   >
-                    <td className="rest_btn">{restaurant.name}</td>
+                    <td className='rest_btn'>{restaurant.name}</td>
                     <td>{restaurant.location}</td>
-                    <td>{"$".repeat(restaurant.price_range)}</td>
+                    <td>{'$'.repeat(restaurant.price_range)}</td>
                     <td>{renderRating(restaurant)}</td>
                     <td>
                       <button
                         onClick={(e) => handleUpdate(e, restaurant.id)}
-                        className="btn btn-warning"
+                        className='btn btn-warning'
                       >
                         Update
                       </button>
@@ -96,7 +97,7 @@ const RestaurantList = (props) => {
                     <td>
                       <button
                         onClick={(e) => handleDelete(e, restaurant.id)}
-                        className="btn btn-danger"
+                        className='btn btn-danger'
                       >
                         Delete
                       </button>
@@ -104,18 +105,6 @@ const RestaurantList = (props) => {
                   </tr>
                 );
               })}
-            {/* <tr>
-              <td>McDonalds</td>
-              <td>New York</td>
-              <td>$$</td>
-              <td>Rating</td>
-              <td>
-                <button className="btn btn-warning">Update</button>
-              </td>
-              <td>
-                <button className="btn btn-danger">Delete</button>
-              </td>
-            </tr> */}
           </tbody>
         </table>
       </div>
