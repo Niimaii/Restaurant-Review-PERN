@@ -6,6 +6,14 @@ CREATE TABLE reviews(
     rating INT NOT NULL check(rating >= 1 and rating <= 5)
 );
 
+CREATE TABLE restaurants(
+    id BIGSERIAL NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    price_range INT NOT NULL
+);
+
+
 INSERT INTO reviews (restaurant_id, name, review, rating) values (11, 'Steve', 'Good enough I guess', 3);
 
 INSERT INTO reviews(restaurant_id, name, review, rating) values (1, 'Nimai', 'Amazing vegan restaurant! I would eat there everyday if I could', 5);
