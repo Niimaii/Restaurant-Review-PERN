@@ -41,3 +41,7 @@ Create a project in your choice of IDE and run the following command in the term
 ```bash
 git clone https://github.com/Niimaii/Restaurant-Review-PERN.git
 ```
+
+## Launching
+
+On both the client and server side you can use $npm start
