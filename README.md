@@ -36,7 +36,7 @@ PGPORT= Postgres port number (default is 5432)
 
 ## Installation
 
-Create a project in your choice of IDE and run the following command:
+Create a project in your choice of IDE and run the following command in the terminal:
 
 ```bash
 git clone https://github.com/Niimaii/Restaurant-Review-PERN.git
