@@ -60,7 +60,7 @@ const RestaurantList = (props) => {
 
   return (
     <div>
-      <div className=' list-group'>
+      <div className=' list-group whole_container'>
         <table className='table table-hover table-dark'>
           <thead>
             <tr className='table-primary font-size'>

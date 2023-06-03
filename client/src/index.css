@@ -2,6 +2,7 @@
   display: flex;
   align-items: center; /* flex-direction: row; */
   gap: 1rem;
+  min-width: 485px;
 }
 
 .priceSelect {
@@ -16,6 +17,10 @@
   width: 4rem;
   border-radius: 5px;
 }
+
+/* .whole_container {
+  width: 100%;
+} */
 
 /* Title */
 
@@ -80,5 +85,21 @@
 
   .cont {
     padding: 0px;
+  }
+}
+
+@media (max-width: 385px) {
+}
+
+@media (max-width: 400px) {
+  .table tbody td:nth-child(n + 2):nth-child(-n + 3) {
+    display: none;
+  }
+  .table thead th:nth-child(n + 2):nth-child(-n + 3) {
+    display: none;
+  }
+
+  .restForm {
+    min-width: 340px;
   }
 }
