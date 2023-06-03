@@ -1,18 +1,18 @@
-import React, { useContext, useState } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
+import React, { useContext, useState } from 'react';
+import RestaurantFinder from '../apis/RestaurantFinder';
+import { RestaurantsContext } from '../context/RestaurantsContext';
 
 const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [priceRange, setPriceRange] = useState("Price Range");
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [priceRange, setPriceRange] = useState('Price Range');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await RestaurantFinder.post("/", {
+      const response = await RestaurantFinder.post('/', {
         name,
         location,
         price_range: priceRange,
@@ -25,43 +25,43 @@ const AddRestaurant = () => {
   console.log(priceRange);
 
   return (
-    <div className="mb-4">
-      <form className="" action="">
-        <div className="restForm form-row">
-          <div className="col">
+    <div className='add_restaurant mb-4'>
+      <form className='' action=''>
+        <div className='restForm form-row'>
+          <div className='col'>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              type="text"
-              className="form-control"
-              placeholder="name"
+              type='text'
+              className='form-control'
+              placeholder='name'
             />
           </div>
-          <div className="col">
+          <div className='col'>
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              type="text"
-              className="form-control"
-              placeholder="location"
+              type='text'
+              className='form-control'
+              placeholder='location'
             />
           </div>
-          <div className="col">
+          <div className='col'>
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="priceSelect custom-select my-1 mr-sm-2"
-              id=""
+              className='priceSelect custom-select my-1 mr-sm-2'
+              id=''
             >
               <option disabled>Price Range</option>
-              <option value="1">$</option>
-              <option value="2">$$</option>
-              <option value="3">$$$</option>
-              <option value="4">$$$$</option>
-              <option value="5">$$$$$</option>
+              <option value='1'>$</option>
+              <option value='2'>$$</option>
+              <option value='3'>$$$</option>
+              <option value='4'>$$$$</option>
+              <option value='5'>$$$$$</option>
             </select>
           </div>
-          <button onClick={handleSubmit} className="formBtn btn btn-primary">
+          <button onClick={handleSubmit} className='formBtn btn btn-primary'>
             Add
           </button>
         </div>

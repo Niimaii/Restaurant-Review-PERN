@@ -59,15 +59,17 @@ const RestaurantList = (props) => {
   };
 
   return (
-    <div>
-      <div className=' list-group whole_container'>
+    <div className='restaurant_list_container'>
+      <div className='restaurant_list'>
         <table className='table table-hover table-dark'>
           <thead>
             <tr className='table-primary font-size'>
               <th scope='col'>Restaurant</th>
               <th scope='col'>Location</th>
-              <th scope='col'>Price Range</th>
-              <th scope='col'>Ratings</th>
+              <th scope='col'>Price</th>
+              <th scope='col' className='th_ratings'>
+                Ratings
+              </th>
               <th scope='col'>Edit</th>
               <th scope='col'>Delete</th>
             </tr>
@@ -85,8 +87,8 @@ const RestaurantList = (props) => {
                     <td className='rest_btn'>{restaurant.name}</td>
                     <td>{restaurant.location}</td>
                     <td>{'$'.repeat(restaurant.price_range)}</td>
-                    <td>{renderRating(restaurant)}</td>
-                    <td>
+                    <td className='td_ratings'>{renderRating(restaurant)}</td>
+                    <td className='td_buttons'>
                       <button
                         onClick={(e) => handleUpdate(e, restaurant.id)}
                         className='btn btn-warning'
@@ -94,7 +96,7 @@ const RestaurantList = (props) => {
                         Update
                       </button>
                     </td>
-                    <td>
+                    <td className='td_buttons'>
                       <button
                         onClick={(e) => handleDelete(e, restaurant.id)}
                         className='btn btn-danger'

@@ -26,7 +26,6 @@ function AddReview() {
       <form className='review_form_cont' action=''>
         <div className='review_form d-flex form-row'>
           <div className='form-group col-8'>
-            <label htmlFor='name'>Name</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -37,7 +36,6 @@ function AddReview() {
             />
           </div>
           <div className='form-group col-4'>
-            <label htmlFor='rating'>Rating</label>
             <select
               value={rating}
               onChange={(e) => setRating(e.target.value)}
@@ -54,12 +52,12 @@ function AddReview() {
           </div>
         </div>
         <div className='form-group'>
-          <label htmlFor='Review'>Review</label>
           <textarea
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
             id='Review'
             className='form-control'
+            placeholder='Type Review'
           ></textarea>
         </div>
         <button

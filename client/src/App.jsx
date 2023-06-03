@@ -8,15 +8,13 @@ import { RestaurantsContextProvider } from './context/RestaurantsContext';
 const App = () => {
   return (
     <RestaurantsContextProvider>
-      <div className='container cont'>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/restaurants/:id/update' element={<UpdatePage />} />
-            <Route path='/restaurants/:id' element={<RestaurantDetailPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/restaurants/:id/update' element={<UpdatePage />} />
+          <Route path='/restaurants/:id' element={<RestaurantDetailPage />} />
+        </Routes>
+      </BrowserRouter>
     </RestaurantsContextProvider>
   );
 };
